@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Analysis</title>
+</head>
+<body>
+    <h1>Image Analysis</h1>
+    
+    <form action="/analyze" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" value="Analyze">
+    </form>
+    
+    {% if image_path %}
+        <h2>Original Image</h2>
+        <img src="{{ image_path }}" alt="Original Image">
+
+        {% if result %}
+            <h2>Labels</h2>
+            <ul>
+                {% for label, score in result %}
+                    <li>{{ label }}: {{ score }}%</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
+
+
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Analysis</title>
+</head>
+<body>
+    <h1>Image Analysis Result</h1>
+    <img src="{{ url_for('static', filename='image.jpg') }}" alt="Uploaded Image">
+    <img src="{{ image_path }}" alt="Original Image" width="400">
+    <h2>Labels</h2>
+    <ul>
+        {% for label, score in result %}
+            <li>{{ label }}: {{ score }}%</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+-->
