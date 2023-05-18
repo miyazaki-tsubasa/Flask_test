@@ -5,6 +5,8 @@ from google.cloud import vision
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'  # アップロードされた画像の保存先フォルダ
 
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:\Users\t-miy\Downloads\rapid-stage-380007-621ecdc46c1c.json'
+
 @app.route('/')
 def index():
     # 画像読み込み
